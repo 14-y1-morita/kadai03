@@ -132,8 +132,8 @@
         // 結果と最後に出した手を保持(今だと最後の結果が上書きで保存)
         let key = tmp_result;
         let value = tmp_select;
-
         localStorage.setItem(key,value);
+
         const html = `
             <tr>
                 <td>${key}</td>
@@ -141,9 +141,22 @@
             </tr>
         `;
         $("#list").append(html);
-
+        
     });
 
+    // 最初にlocalStorageから最後の勝敗結果を書く部分
+    for(let i=0; i<localStorage.length; i++){
+        const key   = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        const html = `
+                <tr>
+                    <td>${key}</td>
+                    <td>${value}</td>
+                </tr>
+                `;
+    　　　　　　　　$("#list").append(html);
+　　　　　　　　}
+    
 </script>
 </body>
 </html>
